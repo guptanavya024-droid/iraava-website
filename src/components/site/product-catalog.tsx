@@ -42,14 +42,16 @@ export function ProductCatalog({ products }: { products: CatalogProduct[] }) {
 
   return (
     <Tabs value={tab} onValueChange={setTab}>
-      <TabsList className="h-auto p-1">
-        {CATEGORIES.map((c) => (
-          <TabsTrigger key={c.value} value={c.value} className="px-5 py-2 text-sm">
-            {c.label}
-            <span className="ml-1.5 text-xs text-muted-foreground">({byCategory[c.value].length})</span>
-          </TabsTrigger>
-        ))}
-      </TabsList>
+      <div className="sticky top-16 z-30 -mx-4 border-b border-border bg-background/95 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <TabsList className="h-auto p-1">
+          {CATEGORIES.map((c) => (
+            <TabsTrigger key={c.value} value={c.value} className="px-5 py-2 text-sm">
+              {c.label}
+              <span className="ml-1.5 text-xs text-muted-foreground">({byCategory[c.value].length})</span>
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </div>
 
       {CATEGORIES.map((c) => {
         const items = byCategory[c.value];
