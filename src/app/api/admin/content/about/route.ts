@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { requireAdminSession } from "@/lib/require-admin";
@@ -32,5 +33,6 @@ export async function PUT(request: Request) {
       : []),
   ]);
 
+  revalidatePath("/about");
   return NextResponse.json({ ok: true });
 }

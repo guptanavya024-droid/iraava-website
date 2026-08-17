@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { requireAdminSession } from "@/lib/require-admin";
@@ -40,5 +41,8 @@ export async function PUT(request: Request) {
       : []),
   ]);
 
+  // Settings (logo, contact info, socials) render in the Header/Footer and
+  // on Work With Us / Contact — bust every page under the (site) layout.
+  revalidatePath("/", "layout");
   return NextResponse.json({ ok: true });
 }

@@ -69,8 +69,18 @@ export function ProductsClient({ initialProducts }: { initialProducts: Product[]
 
   function openEdit(product: Product) {
     setEditingId(product.id);
-    const { id: _id, ...rest } = product;
-    setForm(rest);
+    setForm({
+      category: product.category,
+      type: product.type,
+      name: product.name,
+      variant: product.variant,
+      description: product.description,
+      ingredients: product.ingredients,
+      otherDetails: product.otherDetails,
+      referenceLink: product.referenceLink,
+      imageUrl: product.imageUrl,
+      isActive: product.isActive,
+    });
     setDialogOpen(true);
   }
 

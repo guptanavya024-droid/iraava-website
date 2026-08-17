@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { requireAdminSession } from "@/lib/require-admin";
@@ -30,5 +31,6 @@ export async function POST(request: Request) {
     data: { ...parsed.data, order: (maxOrder._max.order ?? -1) + 1 },
   });
 
+  revalidatePath("/product-range");
   return NextResponse.json(product, { status: 201 });
 }

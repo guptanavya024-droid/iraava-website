@@ -79,8 +79,8 @@ export function EnquiryForm() {
   if (submitted) {
     return (
       <div className="rounded-xl border border-border bg-card p-8 text-center">
-        <h3 className="text-lg font-semibold text-foreground">Thank you — we've received your enquiry.</h3>
-        <p className="mt-2 text-sm text-muted-foreground">We'll get back to you shortly.</p>
+        <h3 className="text-lg font-semibold text-foreground">Thank you — we&apos;ve received your enquiry.</h3>
+        <p className="mt-2 text-sm text-muted-foreground">We&apos;ll get back to you shortly.</p>
       </div>
     );
   }

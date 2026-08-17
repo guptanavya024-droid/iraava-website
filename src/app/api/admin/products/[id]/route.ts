@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { requireAdminSession } from "@/lib/require-admin";
@@ -26,6 +27,7 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
   if (!parsed.success) return NextResponse.json({ error: "Invalid submission" }, { status: 400 });
 
   const product = await db.product.update({ where: { id }, data: parsed.data });
+  revalidatePath("/product-range");
   return NextResponse.json(product);
 }
 
@@ -35,5 +37,6 @@ export async function DELETE(_request: Request, { params }: { params: Promise<{ 
 
   const { id } = await params;
   await db.product.delete({ where: { id } });
+  revalidatePath("/product-range");
   return NextResponse.json({ ok: true });
 }
