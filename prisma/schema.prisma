@@ -1,0 +1,179 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Admin ───────────────────────────────────────────────────────────────────
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime @default(now())
+}
+
+// ─── Site settings, footer, socials ─────────────────────────────────────────
+// Singleton row — fixed id so the CMS always upserts the same record instead
+// of a generic page-builder needing to track "which row is live".
+
+model SiteSettings {
+  id           String  @id @default("singleton")
+  logoUrl      String?
+  siteName     String  @default("Iraava Naturals")
+  tagline      String  @default("Nourished by India.")
+  email        String?
+  phone        String?
+  addressLine1 String?
+  addressLine2 String?
+  city         String?
+  state        String?
+  pincode      String?
+  country      String? @default("India")
+
+  updatedAt DateTime @updatedAt
+}
+
+enum SocialPlatform {
+  INSTAGRAM
+  FACEBOOK
+  WHATSAPP
+  LINKEDIN
+  TWITTER
+  YOUTUBE
+  OTHER
+}
+
+model SocialLink {
+  id       String         @id @default(cuid())
+  platform SocialPlatform
+  url      String
+  order    Int            @default(0)
+}
+
+// ─── Page content ────────────────────────────────────────────────────────────
+// One singleton row per page holds the fields that map 1:1 to the source
+// copy doc; repeating list sections (principles, why-us points) get their
+// own ordered table instead of a JSON blob, so each is a labeled CMS field.
+
+model HomeContent {
+  id                String @id @default("singleton")
+  heroHeading       String
+  heroSubheading    String
+  whereWeFromText   String
+  whatWeDoText      String
+  productRangeIntro String
+  buyerCtaHeading   String
+  buyerCtaBody      String
+
+  updatedAt DateTime @updatedAt
+}
+
+model WhyUsPoint {
+  id    String @id @default(cuid())
+  title String
+  body  String
+  order Int    @default(0)
+}
+
+model AboutContent {
+  id               String @id @default("singleton")
+  headline         String
+  subheading       String
+  brandStory       String
+  closingStatement String
+
+  updatedAt DateTime @updatedAt
+}
+
+model ApproachPrinciple {
+  id    String @id @default(cuid())
+  title String
+  body  String
+  order Int    @default(0)
+}
+
+model ProductRangeContent {
+  id         String @id @default("singleton")
+  headline   String
+  subheading String
+  introText  String
+
+  updatedAt DateTime @updatedAt
+}
+
+model WorkWithUsContent {
+  id              String @id @default("singleton")
+  intro           String
+  catalogueBlurb  String
+  bulletPoints    Json
+  madeInIndiaText String
+
+  updatedAt DateTime @updatedAt
+}
+
+// ─── Product catalog ─────────────────────────────────────────────────────────
+
+enum ProductCategory {
+  FACE_CARE
+  BODY_CARE
+}
+
+model Product {
+  id            String          @id @default(cuid())
+  category      ProductCategory
+  type          String
+  name          String
+  variant       String?
+  description   String
+  ingredients   String?
+  otherDetails  String?
+  referenceLink String?
+  imageUrl      String?
+  order         Int             @default(0)
+  isActive      Boolean         @default(true)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+// ─── Enquiries ───────────────────────────────────────────────────────────────
+
+enum BuyerType {
+  BRAND
+  IMPORTER
+  DISTRIBUTOR
+  OTHER
+}
+
+enum EnquiryType {
+  CATALOGUE_PRICING
+  PRIVATE_LABEL
+  CUSTOMIZATION
+  EXPORT_DISTRIBUTION
+  GENERAL
+}
+
+enum EnquiryStatus {
+  NEW
+  READ
+  ARCHIVED
+}
+
+model EnquirySubmission {
+  id                String        @id @default(cuid())
+  name              String
+  company           String
+  workEmail         String
+  phone             String?
+  country           String
+  buyerType         BuyerType
+  productCategories Json
+  enquiryType       EnquiryType
+  message           String
+  status            EnquiryStatus @default(NEW)
+  createdAt         DateTime      @default(now())
+}
