@@ -3,63 +3,62 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ── Design tokens — warm Ayurvedic/heritage palette ──────────────────────────
-   Terracotta primary (CTAs, links) on warm ivory, sandalwood-beige surfaces,
-   a restrained deep-olive accent for icons/tags, and a gold hairline for
-   dividers/underlines. Every token redefined under .dark — nothing in the UI
-   should reference a raw hex value directly. */
+/* ── Design tokens — cooler heritage palette ──────────────────────────────────
+   Deep indigo primary (CTAs, links) on ivory, antique-gold accents for
+   icons/tags/eyebrows. Indigo + gold + ivory reads closer to traditional
+   Indian textile heritage (block-print, zari thread) than the earlier
+   terracotta/olive "natural DTC" direction. Every token redefined under
+   .dark — nothing in the UI should reference a raw hex value directly. */
 :root {
   color-scheme: light;
-  --background:             #fbf6ee;
-  --foreground:             #2b241c;
+  --background:             #faf7ef;
+  --foreground:             #1c2038;
   --card:                   #ffffff;
-  --card-foreground:        #2b241c;
+  --card-foreground:        #1c2038;
   --popover:                #ffffff;
-  --popover-foreground:     #2b241c;
-  --primary:                #b5502a;
+  --popover-foreground:     #1c2038;
+  --primary:                #2a3266;
   --primary-foreground:     #ffffff;
-  --secondary:              #f3e9d8;
-  --secondary-foreground:   #2b241c;
-  --muted:                  #efe6d8;
-  --muted-foreground:       #6b5f4f;
-  --accent:                 #eef1e5;   /* faint olive tint — icon/tag backgrounds */
-  --accent-foreground:      #4b5d3a;
-  --destructive:            #b3261e;
+  --secondary:              #f1e7d2;
+  --secondary-foreground:   #1c2038;
+  --muted:                  #f1ead9;
+  --muted-foreground:       #6e6656;
+  --accent:                 #f3e6c8;   /* pale gold tint — icon/tag backgrounds */
+  --accent-foreground:      #8a661e;
+  --destructive:            #a3312b;
   --destructive-foreground: #ffffff;
-  --border:                 #e4d8c4;
-  --input:                  #e4d8c4;
-  --ring:                   #b5502a;
+  --border:                 #e3d9c0;
+  --input:                  #e3d9c0;
+  --ring:                   #2a3266;
   --radius:                 0.5rem;
 
   /* ── Brand accents ─────────────────────────────────────────────────────── */
-  --gold:                   #c99a2e;
-  --olive:                  #4b5d3a;
+  --gold:                   #b8892f;
 }
 
 .dark {
   color-scheme: dark;
-  --background:             #1c1712;
-  --foreground:             #f3ead9;
-  --card:                   #241e17;
-  --card-foreground:        #f3ead9;
-  --popover:                #241e17;
-  --popover-foreground:     #f3ead9;
-  --primary:                #d97148;
-  --primary-foreground:     #1c1712;
-  --secondary:              #2e261c;
-  --secondary-foreground:   #f3ead9;
-  --muted:                  #2a231b;
-  --muted-foreground:       #b3a48d;
-  --accent:                 #24291f;
-  --accent-foreground:      #9fbb85;
+  --background:             #14172a;
+  --foreground:             #f2efe6;
+  --card:                   #1c2038;
+  --card-foreground:        #f2efe6;
+  --popover:                #1c2038;
+  --popover-foreground:     #f2efe6;
+  --primary:                #6b7fd6;
+  --primary-foreground:     #14172a;
+  --secondary:              #232842;
+  --secondary-foreground:   #f2efe6;
+  --muted:                  #1e2238;
+  --muted-foreground:       #a7a2b8;
+  --accent:                 #2e2a1c;
+  --accent-foreground:      #d8b45c;
   --destructive:            #e5675c;
-  --destructive-foreground: #1c1712;
-  --border:                 #3a3122;
-  --input:                  #3a3122;
-  --ring:                   #d97148;
+  --destructive-foreground: #14172a;
+  --border:                 #2d3150;
+  --input:                  #2d3150;
+  --ring:                   #6b7fd6;
 
-  --gold:                   #dcb247;
-  --olive:                  #9fbb85;
+  --gold:                   #d8b45c;
 }
 
 /* ── Map all tokens → Tailwind colour utilities ───────────────────────────── */
@@ -84,7 +83,6 @@
   --color-input:                 var(--input);
   --color-ring:                  var(--ring);
   --color-gold:                  var(--gold);
-  --color-olive:                 var(--olive);
   --font-sans:                   var(--font-sans);
   --font-display:                var(--font-display);
   --radius:                      var(--radius);
@@ -116,13 +114,13 @@ a:focus-visible,
 }
 
 /* ── Brand typography helpers ──────────────────────────────────────────────
-   .brand-display: the serif headline face used for H1/H2 across the public
-   site — keeps every hero/section-heading from independently re-picking a
-   font-family and italic/weight combo. */
+   .brand-display: the headline face used for H1/H2 across the public site —
+   a bold modern grotesk (not a serif) with tight tracking, keeping every
+   hero/section-heading from independently re-picking a weight/spacing combo. */
 .brand-display {
-  font-family: var(--font-display), ui-serif, Georgia, serif;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .brand-eyebrow {
@@ -130,5 +128,5 @@ a:focus-visible,
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--olive);
+  color: var(--accent-foreground);
 }
