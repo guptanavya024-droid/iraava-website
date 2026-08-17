@@ -18,13 +18,13 @@ export function Footer({ settings, socialLinks }: FooterProps) {
   ].filter(Boolean);
 
   return (
-    <footer className="bg-foreground text-background">
-      <Container className="py-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="lg:col-span-2 space-y-4">
+    <footer className="border-t-2 border-primary bg-card">
+      <Container className="py-14 grid gap-10 lg:grid-cols-[1.3fr_1fr_1fr]">
+        <div className="space-y-4">
           <Logo logoUrl={settings.logoUrl} siteName={settings.siteName} />
-          <p className="text-sm text-background/70 max-w-sm">{settings.tagline}</p>
+          <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">{settings.tagline}</p>
           {socialLinks.length > 0 && (
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex items-center gap-2 pt-1">
               {socialLinks.map((link) => {
                 const Icon = SOCIAL_ICONS[link.platform];
                 return (
@@ -34,7 +34,7 @@ export function Footer({ settings, socialLinks }: FooterProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={SOCIAL_LABELS[link.platform]}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-background/25 text-background/80 transition-colors hover:border-background hover:text-background"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                   >
                     <Icon className="h-4 w-4" />
                   </a>
@@ -45,10 +45,10 @@ export function Footer({ settings, socialLinks }: FooterProps) {
         </div>
 
         <div className="space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-wider text-background/50">Navigate</p>
-          <nav className="flex flex-col gap-2">
+          <p className="brand-eyebrow">Navigate</p>
+          <nav className="flex flex-col gap-2.5">
             {NAV_LINKS.map((link) => (
-              <Link key={link.href} href={link.href} className="text-sm text-background/80 hover:text-background">
+              <Link key={link.href} href={link.href} className="text-sm text-foreground/75 hover:text-primary">
                 {link.label}
               </Link>
             ))}
@@ -56,20 +56,20 @@ export function Footer({ settings, socialLinks }: FooterProps) {
         </div>
 
         <div className="space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-wider text-background/50">Contact</p>
-          <div className="flex flex-col gap-2 text-sm text-background/80">
+          <p className="brand-eyebrow">Contact</p>
+          <div className="flex flex-col gap-2.5 text-sm">
             {settings.email && (
-              <a href={`mailto:${settings.email}`} className="hover:text-background">
+              <a href={`mailto:${settings.email}`} className="text-foreground/75 hover:text-primary">
                 {settings.email}
               </a>
             )}
             {settings.phone && (
-              <a href={`tel:${settings.phone}`} className="hover:text-background">
+              <a href={`tel:${settings.phone}`} className="text-foreground/75 hover:text-primary">
                 {settings.phone}
               </a>
             )}
             {addressLines.length > 0 && (
-              <address className="not-italic text-background/70 leading-relaxed">
+              <address className="not-italic text-foreground/60 leading-relaxed">
                 {addressLines.map((line, i) => (
                   <span key={i} className="block">
                     {line}
@@ -81,8 +81,8 @@ export function Footer({ settings, socialLinks }: FooterProps) {
         </div>
       </Container>
 
-      <div className="border-t border-background/15">
-        <Container className="py-5 text-xs text-background/50">
+      <div className="border-t border-border">
+        <Container className="py-5 text-xs text-muted-foreground">
           © {new Date().getFullYear()} {settings.siteName}. Made in India.
         </Container>
       </div>

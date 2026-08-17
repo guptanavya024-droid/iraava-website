@@ -3,62 +3,58 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ── Design tokens — cooler heritage palette ──────────────────────────────────
-   Deep indigo primary (CTAs, links) on ivory, antique-gold accents for
-   icons/tags/eyebrows. Indigo + gold + ivory reads closer to traditional
-   Indian textile heritage (block-print, zari thread) than the earlier
-   terracotta/olive "natural DTC" direction. Every token redefined under
-   .dark — nothing in the UI should reference a raw hex value directly. */
+/* ── Design tokens — drawn from the logo ──────────────────────────────────────
+   The logo is a single deep forest green (#1d5327) line mark on white — no
+   second brand color was ever defined, so the palette here is that exact
+   green plus a cool, lighter sage/gray built around it. Deliberately no warm
+   cream/peach tone anywhere (an earlier pass had one — reads too close to
+   generic "AI product" chrome). Every token redefined under .dark — nothing
+   in the UI should reference a raw hex value directly. */
 :root {
   color-scheme: light;
-  --background:             #faf7ef;
-  --foreground:             #1c2038;
+  --background:             #f6f8f4;
+  --foreground:             #16321c;
   --card:                   #ffffff;
-  --card-foreground:        #1c2038;
+  --card-foreground:        #16321c;
   --popover:                #ffffff;
-  --popover-foreground:     #1c2038;
-  --primary:                #2a3266;
+  --popover-foreground:     #16321c;
+  --primary:                #1d5327;
   --primary-foreground:     #ffffff;
-  --secondary:              #f1e7d2;
-  --secondary-foreground:   #1c2038;
-  --muted:                  #f1ead9;
-  --muted-foreground:       #6e6656;
-  --accent:                 #f3e6c8;   /* pale gold tint — icon/tag backgrounds */
-  --accent-foreground:      #8a661e;
+  --secondary:              #eaefe3;
+  --secondary-foreground:   #16321c;
+  --muted:                  #eef1e8;
+  --muted-foreground:       #5c6b57;
+  --accent:                 #e1e8d8;   /* pale sage tint — icon/tag backgrounds */
+  --accent-foreground:      #1d5327;
   --destructive:            #a3312b;
   --destructive-foreground: #ffffff;
-  --border:                 #e3d9c0;
-  --input:                  #e3d9c0;
-  --ring:                   #2a3266;
+  --border:                 #dce3d2;
+  --input:                  #dce3d2;
+  --ring:                   #1d5327;
   --radius:                 0.5rem;
-
-  /* ── Brand accents ─────────────────────────────────────────────────────── */
-  --gold:                   #b8892f;
 }
 
 .dark {
   color-scheme: dark;
-  --background:             #14172a;
-  --foreground:             #f2efe6;
-  --card:                   #1c2038;
-  --card-foreground:        #f2efe6;
-  --popover:                #1c2038;
-  --popover-foreground:     #f2efe6;
-  --primary:                #6b7fd6;
-  --primary-foreground:     #14172a;
-  --secondary:              #232842;
-  --secondary-foreground:   #f2efe6;
-  --muted:                  #1e2238;
-  --muted-foreground:       #a7a2b8;
-  --accent:                 #2e2a1c;
-  --accent-foreground:      #d8b45c;
+  --background:             #101913;
+  --foreground:             #edefe1;
+  --card:                   #16211a;
+  --card-foreground:        #edefe1;
+  --popover:                #16211a;
+  --popover-foreground:     #edefe1;
+  --primary:                #4e9a5c;
+  --primary-foreground:     #0e1710;
+  --secondary:              #1d2a20;
+  --secondary-foreground:   #edefe1;
+  --muted:                  #1a241c;
+  --muted-foreground:       #9dae97;
+  --accent:                 #1f2e20;
+  --accent-foreground:      #7cc28a;
   --destructive:            #e5675c;
-  --destructive-foreground: #14172a;
-  --border:                 #2d3150;
-  --input:                  #2d3150;
-  --ring:                   #6b7fd6;
-
-  --gold:                   #d8b45c;
+  --destructive-foreground: #0e1710;
+  --border:                 #253327;
+  --input:                  #253327;
+  --ring:                   #4e9a5c;
 }
 
 /* ── Map all tokens → Tailwind colour utilities ───────────────────────────── */
@@ -82,7 +78,6 @@
   --color-border:                var(--border);
   --color-input:                 var(--input);
   --color-ring:                  var(--ring);
-  --color-gold:                  var(--gold);
   --font-sans:                   var(--font-sans);
   --font-display:                var(--font-display);
   --radius:                      var(--radius);
