@@ -19,7 +19,6 @@ export default async function HomePage() {
   return (
     <>
       <Hero
-        eyebrow="Iraava Naturals"
         heading={content.heroHeading}
         subheading={content.heroSubheading}
         primaryCta={{ label: "Explore Product Range", href: "/product-range" }}
@@ -44,11 +43,11 @@ export default async function HomePage() {
       <section className="py-20 sm:py-24">
         <Container className="grid gap-10 sm:grid-cols-2">
           <div>
-            <SectionHeading eyebrow="Where we come from" heading="A tradition of botanical wellness" />
+            <SectionHeading heading="Where we come from" />
             <p className="mt-5 text-sm text-muted-foreground leading-relaxed">{content.whereWeFromText}</p>
           </div>
           <div>
-            <SectionHeading eyebrow="What we do" heading="Formulation to final product" />
+            <SectionHeading heading="What we do" />
             <p className="mt-5 text-sm text-muted-foreground leading-relaxed">{content.whatWeDoText}</p>
           </div>
         </Container>
@@ -56,7 +55,7 @@ export default async function HomePage() {
 
       <section className="py-20 sm:py-24 bg-secondary/60">
         <Container>
-          <SectionHeading eyebrow="Why Iraava Naturals" heading="Why buyers work with us" />
+          <SectionHeading heading="Why buyers work with us" />
           <div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 max-w-3xl">
             {whyUsPoints.map((point, i) => (
               <FeatureCard key={point.id} index={i} title={point.title} body={point.body} />
@@ -68,7 +67,6 @@ export default async function HomePage() {
       <section className="py-20 sm:py-24">
         <Container>
           <SectionHeading
-            eyebrow="Product Range"
             heading="Face and body care, organised around the way buyers source"
             subheading={content.productRangeIntro}
           />

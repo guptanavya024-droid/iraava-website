@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/site/container";
 
 interface HeroProps {
-  eyebrow: string;
   heading: string;
   subheading: string;
   primaryCta: { label: string; href: string };
@@ -13,14 +12,13 @@ interface HeroProps {
   images?: { url: string; alt: string }[];
 }
 
-export function Hero({ eyebrow, heading, subheading, primaryCta, secondaryCta, images = [] }: HeroProps) {
+export function Hero({ heading, subheading, primaryCta, secondaryCta, images = [] }: HeroProps) {
   const [big, small1, small2] = images;
 
   return (
     <section className="border-b border-border bg-secondary/40">
       <Container className="grid gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-24">
         <div>
-          <p className="brand-eyebrow mb-5">{eyebrow}</p>
           <h1 className="brand-display text-4xl sm:text-5xl lg:text-[3.4rem] lg:leading-[1.05] text-foreground text-balance">
             {heading}
           </h1>

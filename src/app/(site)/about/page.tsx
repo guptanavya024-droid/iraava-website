@@ -32,7 +32,7 @@ export default async function AboutPage() {
 
       <section className="py-16 sm:py-20 bg-secondary/60">
         <Container>
-          <SectionHeading eyebrow="Our Approach" heading="Four principles that guide the work" align="center" />
+          <SectionHeading heading="Four principles that guide the work" align="center" />
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             {principles.map((p, i) => (
               <FeatureCard key={p.id} index={i} title={p.title} body={p.body} />

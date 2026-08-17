@@ -22,8 +22,7 @@ export default async function WorkWithUsPage() {
     <>
       <section className="border-b border-border py-16 sm:py-20">
         <Container className="max-w-2xl mx-auto text-center">
-          <p className="brand-eyebrow mb-4">Who we work with</p>
-          <h1 className="brand-display text-4xl sm:text-5xl text-foreground text-balance">Work With Us</h1>
+          <h1 className="brand-display text-4xl sm:text-5xl text-foreground text-balance">Who we work with</h1>
           <p className="mt-5 text-base text-muted-foreground leading-relaxed">{content.intro}</p>
         </Container>
       </section>
@@ -31,7 +30,7 @@ export default async function WorkWithUsPage() {
       <section className="py-16 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-2 items-start">
           <div>
-            <SectionHeading eyebrow="Start here" heading="Start with our catalogue." subheading={content.catalogueBlurb} />
+            <SectionHeading heading="Start with our catalogue." subheading={content.catalogueBlurb} />
             <ul className="mt-6 space-y-3">
               {content.bulletPoints.map((bullet, i) => (
                 <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/85">
@@ -46,7 +45,7 @@ export default async function WorkWithUsPage() {
           </div>
 
           <div className="rounded-xl border border-border bg-card p-7 space-y-5">
-            <SectionHeading eyebrow="Direct contact" heading="Get in touch" />
+            <SectionHeading heading="Get in touch" />
             <div className="space-y-3 text-sm">
               {settings.email && (
                 <div>

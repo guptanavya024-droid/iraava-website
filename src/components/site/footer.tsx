@@ -45,7 +45,7 @@ export function Footer({ settings, socialLinks }: FooterProps) {
         </div>
 
         <div className="space-y-3">
-          <p className="brand-eyebrow">Navigate</p>
+          <p className="text-sm font-semibold text-foreground">Navigate</p>
           <nav className="flex flex-col gap-2.5">
             {NAV_LINKS.map((link) => (
               <Link key={link.href} href={link.href} className="text-sm text-foreground/75 hover:text-primary">
@@ -56,7 +56,7 @@ export function Footer({ settings, socialLinks }: FooterProps) {
         </div>
 
         <div className="space-y-3">
-          <p className="brand-eyebrow">Contact</p>
+          <p className="text-sm font-semibold text-foreground">Contact</p>
           <div className="flex flex-col gap-2.5 text-sm">
             {settings.email && (
               <a href={`mailto:${settings.email}`} className="text-foreground/75 hover:text-primary">
