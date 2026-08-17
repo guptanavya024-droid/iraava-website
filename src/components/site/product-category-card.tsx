@@ -11,7 +11,7 @@ interface ProductCategoryCardProps {
   className?: string;
 }
 
-// A representative product photo instead of an icon-in-a-circle — the
+// A representative product photo instead of an icon-in-a-circle: the
 // catalogue already has real photography, so a generic Lucide icon here was
 // throwing that away in favour of the default shadcn "feature card" shape.
 export function ProductCategoryCard({ imageUrl, title, body, href, className }: ProductCategoryCardProps) {

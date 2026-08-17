@@ -34,7 +34,7 @@ async function seedAdminUser() {
   const email = process.env.ADMIN_EMAIL?.toLowerCase().trim();
   const password = process.env.ADMIN_PASSWORD;
   if (!email || !password) {
-    console.log("ADMIN_EMAIL/ADMIN_PASSWORD not set — skipping admin user seed.");
+    console.log("ADMIN_EMAIL/ADMIN_PASSWORD not set, skipping admin user seed.");
     return;
   }
 
@@ -112,7 +112,7 @@ async function seedWorkWithUsContent() {
 async function seedProducts() {
   const existing = await db.product.count();
   if (existing > 0) {
-    console.log(`Products already seeded (${existing} rows) — skipping.`);
+    console.log(`Products already seeded (${existing} rows), skipping.`);
     return;
   }
 

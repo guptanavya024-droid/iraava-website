@@ -38,7 +38,7 @@ export function EnquiryForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // Honeypot — real visitors never fill a field this hidden from view.
+    // Honeypot: real visitors never fill a field this hidden from view.
     if (formData.get("website")) return;
 
     if (categories.length === 0) {
@@ -79,7 +79,7 @@ export function EnquiryForm() {
   if (submitted) {
     return (
       <div className="rounded-xl border border-border bg-card p-8 text-center">
-        <h3 className="text-lg font-semibold text-foreground">Thank you — we&apos;ve received your enquiry.</h3>
+        <h3 className="text-lg font-semibold text-foreground">Thank you, we&apos;ve received your enquiry.</h3>
         <p className="mt-2 text-sm text-muted-foreground">We&apos;ll get back to you shortly.</p>
       </div>
     );

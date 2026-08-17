@@ -24,7 +24,7 @@ export function PageHeader({ title, subtitle, action, className }: PageHeaderPro
   );
 }
 
-// Kept in this file, not a page's loading.tsx, deliberately — a loading
+// Kept in this file, not a page's loading.tsx, deliberately: a loading
 // skeleton drifts the moment the real component's sizing changes unless
 // it's forced to live right next to what it's approximating. Any
 // loading.tsx composes this instead of hand-rolling its own title/subtitle

@@ -42,7 +42,7 @@ export async function PUT(request: Request) {
   ]);
 
   // Settings (logo, contact info, socials) render in the Header/Footer and
-  // on Work With Us / Contact — bust every page under the (site) layout.
+  // on Work With Us / Contact, so bust every page under the (site) layout.
   revalidatePath("/", "layout");
   return NextResponse.json({ ok: true });
 }

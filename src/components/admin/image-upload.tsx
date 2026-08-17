@@ -17,7 +17,7 @@ interface ImageUploadProps {
 
 // Uploads directly browser → Blob (via a short-lived token from
 // /api/admin/blob/upload) rather than through this server, since product
-// photos regularly run 5-6MB — well past a serverless function's request
+// photos regularly run 5-6MB, well past a serverless function's request
 // body limit.
 export function ImageUpload({ value, onChange, aspect = "square", label = "Image" }: ImageUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);

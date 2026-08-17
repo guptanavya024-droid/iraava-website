@@ -84,7 +84,7 @@ export function AboutContentForm({
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Our Approach — four principles</CardTitle>
+          <CardTitle className="text-base">Our Approach: four principles</CardTitle>
         </CardHeader>
         <CardContent>
           <PointsListEditor items={principles} onChange={setPrinciples} itemLabel="Principle" />

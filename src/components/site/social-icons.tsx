@@ -2,7 +2,7 @@ import type { SVGProps } from "react";
 import type { SocialPlatform } from "@/lib/types";
 
 /* lucide-react dropped all brand/trademark icons (Instagram, Facebook,
-   LinkedIn, X, YouTube) years ago — these are small hand-rolled outline
+   LinkedIn, X, YouTube) years ago, so these are small hand-rolled outline
    marks kept visually consistent with lucide's 24x24 stroke style so they
    sit next to lucide icons without looking mismatched. */
 

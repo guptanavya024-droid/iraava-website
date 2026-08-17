@@ -17,7 +17,7 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: {
-    default: "Iraava Naturals — Nourished by India.",
+    default: "Iraava Naturals: Nourished by India.",
     template: "%s · Iraava Naturals",
   },
   description:

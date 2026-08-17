@@ -27,7 +27,7 @@ export default async function ProductRangePage() {
 
       <CtaBanner
         heading="Request the product catalogue"
-        body="Full product details — formulations, key ingredients, available formats, and pricing — are available on request. Get in touch and we will send it across."
+        body="Full product details, including formulations, key ingredients, available formats and pricing, are available on request. Get in touch and we will send it across."
         primaryCta={{ label: "Request Catalogue", href: "/contact" }}
         secondaryCta={{ label: "Contact Us", href: "/contact" }}
       />

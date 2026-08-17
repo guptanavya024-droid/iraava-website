@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/site/container";
 import { EnquiryForm } from "@/components/site/enquiry-form";
+import { Reveal } from "@/components/site/reveal";
 import { getSiteSettings } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Contact" };
@@ -18,12 +19,12 @@ export default async function ContactPage() {
   return (
     <section className="py-16 sm:py-20">
       <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
-        <div>
+        <Reveal>
           <h1 className="brand-display text-3xl sm:text-4xl text-foreground text-balance">
             We&apos;d love to hear from you.
           </h1>
           <p className="mt-5 text-sm text-muted-foreground leading-relaxed">
-            If you are looking to source Indian skincare, or just want to know more about what we make — drop us a
+            If you are looking to source Indian skincare, or just want to know more about what we make, drop us a
             message and we will get back to you.
           </p>
 
@@ -57,12 +58,12 @@ export default async function ContactPage() {
               </div>
             )}
           </div>
-        </div>
+        </Reveal>
 
-        <div className="rounded-xl border border-border bg-card p-6 sm:p-8">
+        <Reveal delay={150} className="rounded-xl border border-border bg-card p-6 sm:p-8">
           <h2 className="text-lg font-semibold text-foreground mb-6">Send an Enquiry</h2>
           <EnquiryForm />
-        </div>
+        </Reveal>
       </Container>
     </section>
   );

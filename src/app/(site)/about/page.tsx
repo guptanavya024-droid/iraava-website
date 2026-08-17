@@ -3,6 +3,7 @@ import { Container } from "@/components/site/container";
 import { SectionHeading } from "@/components/site/section-heading";
 import { FeatureCard } from "@/components/site/feature-card";
 import { CtaBanner } from "@/components/site/cta-banner";
+import { Reveal } from "@/components/site/reveal";
 import { getAboutContent, getApproachPrinciples } from "@/lib/content";
 
 export const metadata: Metadata = { title: "About" };
@@ -23,19 +24,23 @@ export default async function AboutPage() {
       <section className="py-16 sm:py-20">
         <Container className="max-w-2xl mx-auto space-y-5">
           {storyParagraphs.map((para, i) => (
-            <p key={i} className="text-base text-foreground/85 leading-relaxed">
-              {para}
-            </p>
+            <Reveal key={i} delay={i * 100}>
+              <p className="text-base text-foreground/85 leading-relaxed">{para}</p>
+            </Reveal>
           ))}
         </Container>
       </section>
 
       <section className="py-16 sm:py-20 bg-secondary/60">
         <Container>
-          <SectionHeading heading="Four principles that guide the work" align="center" />
+          <Reveal>
+            <SectionHeading heading="Four principles that guide the work" align="center" />
+          </Reveal>
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             {principles.map((p, i) => (
-              <FeatureCard key={p.id} index={i} title={p.title} body={p.body} />
+              <Reveal key={p.id} delay={i * 100}>
+                <FeatureCard index={i} title={p.title} body={p.body} />
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -43,7 +48,9 @@ export default async function AboutPage() {
 
       <section className="py-16 sm:py-20">
         <Container className="max-w-2xl mx-auto text-center">
-          <p className="brand-display text-2xl sm:text-3xl text-foreground leading-snug">{content.closingStatement}</p>
+          <Reveal>
+            <p className="brand-display text-2xl sm:text-3xl text-foreground leading-snug">{content.closingStatement}</p>
+          </Reveal>
         </Container>
       </section>
 

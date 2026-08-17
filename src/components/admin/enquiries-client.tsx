@@ -97,7 +97,7 @@ export function EnquiriesClient({ initialEnquiries }: { initialEnquiries: Enquir
                 <div className="grid grid-cols-2 gap-3">
                   <Info label="Company" value={selected.company} />
                   <Info label="Work email" value={selected.workEmail} />
-                  <Info label="Phone" value={selected.phone ?? "—"} />
+                  <Info label="Phone" value={selected.phone ?? "Not provided"} />
                   <Info label="Country" value={selected.country} />
                   <Info label="Buyer type" value={selected.buyerType} />
                   <Info label="Enquiry type" value={ENQUIRY_TYPE_LABELS[selected.enquiryType] ?? selected.enquiryType} />

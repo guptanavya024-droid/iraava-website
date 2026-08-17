@@ -12,10 +12,16 @@ interface ProductCardProps {
 
 export function ProductCard({ name, variant, type, description, imageUrl }: ProductCardProps) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card">
-      <div className="relative aspect-square bg-secondary">
+    <div className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30">
+      <div className="relative aspect-square bg-secondary overflow-hidden">
         {imageUrl ? (
-          <Image src={imageUrl} alt={name} fill className="object-cover" sizes="(min-width: 768px) 33vw, 50vw" />
+          <Image
+            src={imageUrl}
+            alt={name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(min-width: 768px) 33vw, 50vw"
+          />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
             <Sparkles className="h-8 w-8" />
@@ -28,7 +34,7 @@ export function ProductCard({ name, variant, type, description, imageUrl }: Prod
         </Badge>
         <h3 className="mt-3 text-base font-semibold text-foreground leading-snug">
           {name}
-          {variant && <span className="text-muted-foreground font-normal"> — {variant}</span>}
+          {variant && <span className="text-muted-foreground font-normal">, {variant}</span>}
         </h3>
         <p className="mt-2 text-sm text-muted-foreground leading-relaxed line-clamp-3">{description}</p>
       </div>

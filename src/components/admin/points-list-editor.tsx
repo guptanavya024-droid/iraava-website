@@ -18,7 +18,7 @@ interface PointsListEditorProps {
 }
 
 // Shared by the Home ("Why buyers work with us") and About ("Our Approach")
-// content forms — both are just an ordered list of title+body cards, saved
+// content forms: both are just an ordered list of title+body cards, saved
 // as part of the parent page's single submit rather than independently.
 export function PointsListEditor({ items, onChange, itemLabel }: PointsListEditorProps) {
   function update(index: number, patch: Partial<EditablePoint>) {

@@ -8,7 +8,7 @@ interface FeatureCardProps {
 }
 
 // Editorial list-row treatment (numeral + hairline rule) instead of a boxed
-// icon-in-a-circle card — the latter is the default shadcn "feature card"
+// icon-in-a-circle card: the latter is the default shadcn "feature card"
 // shape and reads as templated at a glance.
 export function FeatureCard({ index, title, body, className }: FeatureCardProps) {
   return (

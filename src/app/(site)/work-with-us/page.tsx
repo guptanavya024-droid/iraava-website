@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { Container } from "@/components/site/container";
 import { SectionHeading } from "@/components/site/section-heading";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/site/reveal";
 import { getWorkWithUsContent, getSiteSettings } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Work With Us" };
@@ -29,7 +30,7 @@ export default async function WorkWithUsPage() {
 
       <section className="py-16 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-2 items-start">
-          <div>
+          <Reveal>
             <SectionHeading heading="Start with our catalogue." subheading={content.catalogueBlurb} />
             <ul className="mt-6 space-y-3">
               {content.bulletPoints.map((bullet, i) => (
@@ -42,9 +43,9 @@ export default async function WorkWithUsPage() {
             <Button asChild size="lg" className="mt-8">
               <Link href="/contact">Request Our Catalogue</Link>
             </Button>
-          </div>
+          </Reveal>
 
-          <div className="rounded-xl border border-border bg-card p-7 space-y-5">
+          <Reveal delay={150} className="rounded-xl border border-border bg-card p-7 space-y-5">
             <SectionHeading heading="Get in touch" />
             <div className="space-y-3 text-sm">
               {settings.email && (
@@ -76,14 +77,16 @@ export default async function WorkWithUsPage() {
                 </div>
               )}
             </div>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       <section className="py-16 sm:py-20 bg-secondary/60">
         <Container className="max-w-2xl mx-auto text-center">
-          <h2 className="brand-display text-3xl sm:text-4xl text-foreground">Made in India. Made for your brand.</h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed">{content.madeInIndiaText}</p>
+          <Reveal>
+            <h2 className="brand-display text-3xl sm:text-4xl text-foreground">Made in India. Made for your brand.</h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed">{content.madeInIndiaText}</p>
+          </Reveal>
         </Container>
       </section>
     </>

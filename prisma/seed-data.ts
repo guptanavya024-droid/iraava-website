@@ -1,7 +1,7 @@
 // Source: "Irava - Product List.xlsx" (Master Product List sheet for the
 // full 45-product catalog; Product List sheet for the 14 products that had
 // full descriptions/ingredients already written). The other 31 get concise,
-// on-brand descriptions written for this catalog — the spreadsheet had no
+// on-brand descriptions written for this catalog, since the spreadsheet had no
 // copy for them beyond a category/type/name. `image` matches a filename in
 // "Iraava Website/Iraava Naturals/".
 
@@ -17,7 +17,7 @@ export interface SeedProduct {
 }
 
 export const SEED_PRODUCTS: SeedProduct[] = [
-  // Face Care — Face Wash
+  // Face Care: Face Wash
   {
     category: "FACE_CARE",
     type: "Face Wash",
@@ -91,7 +91,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     image: "Rejuvenating Face Wash - Pomegranate.png",
   },
 
-  // Face Care — Face Scrub
+  // Face Care: Face Scrub
   {
     category: "FACE_CARE",
     type: "Face Scrub",
@@ -101,7 +101,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     image: "Exfoliating Black Rice Water Face Scrub.png",
   },
 
-  // Face Care — Face Cream
+  // Face Care: Face Cream
   {
     category: "FACE_CARE",
     type: "Face Cream",
@@ -143,7 +143,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     image: "Coconut Brightening Face Cream.png",
   },
 
-  // Face Care — Face Serum
+  // Face Care: Face Serum
   {
     category: "FACE_CARE",
     type: "Face Serum",
@@ -185,7 +185,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     image: "Pomegranate Radiant Glow Firming Serum.png",
   },
 
-  // Face Care — Toner
+  // Face Care: Toner
   {
     category: "FACE_CARE",
     type: "Toner",
@@ -235,7 +235,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     image: "Pomegranate Toner.png",
   },
 
-  // Face Care — Face Gel
+  // Face Care: Face Gel
   {
     category: "FACE_CARE",
     type: "Face Gel",
@@ -289,12 +289,12 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     image: "Pomegranate Face Gel.png",
   },
 
-  // Face Care — Lip Scrub / Lip Balm
+  // Face Care: Lip Scrub / Lip Balm
   {
     category: "FACE_CARE",
     type: "Lip Scrub",
     name: "Lip Scrub",
-    description: "For dark, damaged and chapped lips — formulated with natural oils and butters.",
+    description: "For dark, damaged and chapped lips, formulated with natural oils and butters.",
     ingredients:
       "Walnut Oil, Almond Oil, Vitamin A & E, Olive Oil, Basil (Tulsi) Oil, Orchid Flower Extract, Theobroma Cacao (Cocoa) Seed Butter, Copernicia Cerifera (Carnauba) Wax, Natural Flavour, Cocoa Extract, etc.",
     referenceLink: "https://vedzonederma.com/products/natural-organic-lip-scrub",
@@ -311,7 +311,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     image: "Hydrating Lip Balm.jpg",
   },
 
-  // Body Care — Body Lotion
+  // Body Care: Body Lotion
   {
     category: "BODY_CARE",
     type: "Body Lotion",
@@ -345,7 +345,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     image: "Floral Breeze Body Lotion.png",
   },
 
-  // Body Care — Body Scrub
+  // Body Care: Body Scrub
   {
     category: "BODY_CARE",
     type: "Body Scrub",
@@ -383,7 +383,7 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     image: "Sandalwood & Turmeric Body Scrub.png",
   },
 
-  // Body Care — Body Wash
+  // Body Care: Body Wash
   {
     category: "BODY_CARE",
     type: "Body Wash",
@@ -427,13 +427,13 @@ export const SEED_PRODUCTS: SeedProduct[] = [
     image: "Aloe Vera Body Wash.jpg",
   },
 
-  // Body Care — Foot Butter Balm
+  // Body Care: Foot Butter Balm
   {
     category: "BODY_CARE",
     type: "Foot Butter Balm",
     name: "Foot Butter Balm",
     description:
-      "For dry, cracked feet — with shea, mango, kokum & cocoa butter. Fantastic for a relaxing foot massage, both rebalancing and softening. This intensive balm nourishes even the driest feet, ideal for cracked heels — you'll notice the difference by morning.",
+      "For dry, cracked feet, with shea, mango, kokum & cocoa butter. Fantastic for a relaxing foot massage, both rebalancing and softening. This intensive balm nourishes even the driest feet, ideal for cracked heels: you'll notice the difference by morning.",
     ingredients:
       "Shea, Cocoa, Mango & Kokum Butters, Olive Oil, Coconut Oil, Basil Essential Oil, Carnauba Wax, Walnut Oil, Almond Oil, Castor Oil.",
     referenceLink: "https://vedzonederma.com/products/foot-butter-balm",

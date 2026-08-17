@@ -15,7 +15,7 @@ interface DataTableProps<T> {
   columns: DataTableColumn<T>[];
   rows: T[];
   rowKey: (row: T) => string;
-  /** Rendered as the first column — the row's identity (icon, name, tags),
+  /** Rendered as the first column: the row's identity (icon, name, tags),
    * matching the "Fund" column in Coin's holdings table. */
   leading: (row: T) => ReactNode;
   /** Header label for the leading column, e.g. "Fund" or "User". */

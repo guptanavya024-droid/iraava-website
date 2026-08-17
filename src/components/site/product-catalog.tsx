@@ -6,6 +6,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Pagination } from "@/components/ui/pagination";
 import { EmptyState } from "@/components/ui/empty-state";
 import { ProductCard } from "@/components/site/product-card";
+import { Reveal } from "@/components/site/reveal";
 
 interface CatalogProduct {
   id: string;
@@ -63,15 +64,16 @@ export function ProductCatalog({ products }: { products: CatalogProduct[] }) {
             ) : (
               <>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {pageItems.map((p) => (
-                    <ProductCard
-                      key={p.id}
-                      name={p.name}
-                      variant={p.variant}
-                      type={p.type}
-                      description={p.description}
-                      imageUrl={p.imageUrl}
-                    />
+                  {pageItems.map((p, i) => (
+                    <Reveal key={p.id} delay={(i % PAGE_SIZE) * 60}>
+                      <ProductCard
+                        name={p.name}
+                        variant={p.variant}
+                        type={p.type}
+                        description={p.description}
+                        imageUrl={p.imageUrl}
+                      />
+                    </Reveal>
                   ))}
                 </div>
                 <Pagination

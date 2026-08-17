@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/site/section-heading";
 import { FeatureCard } from "@/components/site/feature-card";
 import { ProductCategoryCard } from "@/components/site/product-category-card";
 import { CtaBanner } from "@/components/site/cta-banner";
+import { Reveal } from "@/components/site/reveal";
 import { getHomeContent, getWhyUsPoints, getActiveProducts } from "@/lib/content";
 
 export default async function HomePage() {
@@ -42,23 +43,27 @@ export default async function HomePage() {
 
       <section className="py-20 sm:py-24">
         <Container className="grid gap-10 sm:grid-cols-2">
-          <div>
+          <Reveal>
             <SectionHeading heading="Where we come from" />
             <p className="mt-5 text-sm text-muted-foreground leading-relaxed">{content.whereWeFromText}</p>
-          </div>
-          <div>
+          </Reveal>
+          <Reveal delay={120}>
             <SectionHeading heading="What we do" />
             <p className="mt-5 text-sm text-muted-foreground leading-relaxed">{content.whatWeDoText}</p>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       <section className="py-20 sm:py-24 bg-secondary/60">
         <Container>
-          <SectionHeading heading="Why buyers work with us" />
+          <Reveal>
+            <SectionHeading heading="Why buyers work with us" />
+          </Reveal>
           <div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 max-w-3xl">
             {whyUsPoints.map((point, i) => (
-              <FeatureCard key={point.id} index={i} title={point.title} body={point.body} />
+              <Reveal key={point.id} delay={i * 100}>
+                <FeatureCard index={i} title={point.title} body={point.body} />
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -66,33 +71,41 @@ export default async function HomePage() {
 
       <section className="py-20 sm:py-24">
         <Container>
-          <SectionHeading
-            heading="Face and body care, organised around the way buyers source"
-            subheading={content.productRangeIntro}
-          />
+          <Reveal>
+            <SectionHeading
+              heading="Face and body care, organised around the way buyers source"
+              subheading={content.productRangeIntro}
+            />
+          </Reveal>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 max-w-3xl">
-            <ProductCategoryCard
-              imageUrl={faceCareImage}
-              title={`Face Care${faceCareCount ? ` (${faceCareCount})` : ""}`}
-              body="Serums, creams and cleansers across selected formats for daily face-care routines."
-              href="/product-range"
-            />
-            <ProductCategoryCard
-              imageUrl={bodyCareImage}
-              title={`Body Care${bodyCareCount ? ` (${bodyCareCount})` : ""}`}
-              body="Creams, cleansers and washes developed for everyday body-care ranges."
-              href="/product-range"
-            />
+            <Reveal delay={0}>
+              <ProductCategoryCard
+                imageUrl={faceCareImage}
+                title={`Face Care${faceCareCount ? ` (${faceCareCount})` : ""}`}
+                body="Serums, creams and cleansers across selected formats for daily face-care routines."
+                href="/product-range"
+              />
+            </Reveal>
+            <Reveal delay={100}>
+              <ProductCategoryCard
+                imageUrl={bodyCareImage}
+                title={`Body Care${bodyCareCount ? ` (${bodyCareCount})` : ""}`}
+                body="Creams, cleansers and washes developed for everyday body-care ranges."
+                href="/product-range"
+              />
+            </Reveal>
           </div>
         </Container>
       </section>
 
-      <CtaBanner
-        heading={content.buyerCtaHeading}
-        body={content.buyerCtaBody}
-        primaryCta={{ label: "Request Catalogue", href: "/contact" }}
-        secondaryCta={{ label: "Send an Enquiry", href: "/contact" }}
-      />
+      <Reveal>
+        <CtaBanner
+          heading={content.buyerCtaHeading}
+          body={content.buyerCtaBody}
+          primaryCta={{ label: "Request Catalogue", href: "/contact" }}
+          secondaryCta={{ label: "Send an Enquiry", href: "/contact" }}
+        />
+      </Reveal>
     </>
   );
 }
