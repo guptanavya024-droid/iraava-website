@@ -5,7 +5,7 @@ import type { SiteSettingsData, SocialLinkData } from "@/lib/types";
    singleton row doesn't exist yet (pre-seed, or if an admin clears a
    field) — so the public site never renders empty sections. */
 
-const DEFAULT_SITE_SETTINGS: SiteSettingsData = {
+export const DEFAULT_SITE_SETTINGS: SiteSettingsData = {
   logoUrl: null,
   siteName: "Iraava Naturals",
   tagline: "Nourished by India.",
@@ -29,7 +29,7 @@ export async function getSocialLinks(): Promise<SocialLinkData[]> {
   return rows;
 }
 
-const DEFAULT_HOME_CONTENT = {
+export const DEFAULT_HOME_CONTENT = {
   heroHeading: "Nourished by India.",
   heroSubheading:
     "We are an Indian skincare manufacturer and exporter, bringing together the knowledge of Ayurvedic tradition and the standards of modern skincare. Our products are made in India. We thoughtfully curate face and body care that is rooted in Indian ingredients and formulations.",
@@ -49,7 +49,7 @@ export async function getHomeContent() {
   return row ?? DEFAULT_HOME_CONTENT;
 }
 
-const DEFAULT_WHY_US_POINTS = [
+export const DEFAULT_WHY_US_POINTS = [
   {
     id: "default-1",
     title: "Rooted in Indian tradition",
@@ -69,7 +69,7 @@ export async function getWhyUsPoints() {
   return rows.length > 0 ? rows : DEFAULT_WHY_US_POINTS;
 }
 
-const DEFAULT_ABOUT_CONTENT = {
+export const DEFAULT_ABOUT_CONTENT = {
   headline: "Indian skincare, made well and shared with the world.",
   subheading:
     "Iraava Naturals is a skincare manufacturer and exporter based in India. We make face and body care products that are rooted in Indian botanical tradition and modern formulation.",
@@ -84,7 +84,7 @@ export async function getAboutContent() {
   return row ?? DEFAULT_ABOUT_CONTENT;
 }
 
-const DEFAULT_APPROACH_PRINCIPLES = [
+export const DEFAULT_APPROACH_PRINCIPLES = [
   {
     id: "default-1",
     title: "We start with Indian knowledge",
@@ -116,7 +116,7 @@ export async function getApproachPrinciples() {
   return rows.length > 0 ? rows : DEFAULT_APPROACH_PRINCIPLES;
 }
 
-const DEFAULT_PRODUCT_RANGE_CONTENT = {
+export const DEFAULT_PRODUCT_RANGE_CONTENT = {
   headline: "Private-label face and body care, made in India.",
   subheading: "A focused range of serums, creams, cleansers and washes for international brands, importers and distributors.",
   introText: "Our range covers face care and body care, with products built around brightening, anti-aging, and hydration.",
@@ -127,7 +127,7 @@ export async function getProductRangeContent() {
   return row ?? DEFAULT_PRODUCT_RANGE_CONTENT;
 }
 
-const DEFAULT_WORK_WITH_US_CONTENT = {
+export const DEFAULT_WORK_WITH_US_CONTENT = {
   intro:
     "We are a manufacturer and exporter, primarily working with buyers who are sourcing products for their customers. We are straightforward to deal with, and we try to make the process of working with us as simple as possible.",
   catalogueBlurb:
