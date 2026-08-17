@@ -24,14 +24,16 @@ export function Header({ logoUrl, siteName }: HeaderProps) {
       <Container className="flex h-16 items-center justify-between">
         <Logo logoUrl={logoUrl} siteName={siteName} />
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                pathname === link.href ? "text-primary" : "text-foreground/80"
+                "rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
+                pathname === link.href
+                  ? "bg-primary text-primary-foreground"
+                  : "text-foreground/75 hover:bg-accent hover:text-accent-foreground"
               )}
             >
               {link.label}
@@ -65,7 +67,9 @@ export function Header({ logoUrl, siteName }: HeaderProps) {
                 onClick={() => setOpen(false)}
                 className={cn(
                   "rounded-md px-3 py-2.5 text-sm font-medium",
-                  pathname === link.href ? "bg-secondary text-primary" : "text-foreground/80 hover:bg-muted"
+                  pathname === link.href
+                    ? "bg-primary text-primary-foreground"
+                    : "text-foreground/80 hover:bg-muted"
                 )}
               >
                 {link.label}
