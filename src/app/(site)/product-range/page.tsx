@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import { Container } from "@/components/site/container";
 import { ProductCatalog } from "@/components/site/product-catalog";
 import { CtaBanner } from "@/components/site/cta-banner";
-import { getProductRangeContent, getActiveProducts } from "@/lib/content";
+import { getProductRangeContent, getActiveProducts, getProductTypes } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Product Range" };
 
 export default async function ProductRangePage() {
-  const [content, products] = await Promise.all([getProductRangeContent(), getActiveProducts()]);
+  const [content, products, productTypes] = await Promise.all([
+    getProductRangeContent(),
+    getActiveProducts(),
+    getProductTypes(),
+  ]);
 
   return (
     <>
@@ -19,9 +23,9 @@ export default async function ProductRangePage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="pt-8 pb-16 sm:pt-10 sm:pb-20">
         <Container>
-          <ProductCatalog products={products} />
+          <ProductCatalog products={products} productTypes={productTypes} />
         </Container>
       </section>
 

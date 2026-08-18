@@ -10,15 +10,27 @@ interface HeroProps {
   primaryCta: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
   images?: { url: string; alt: string }[];
+  logoUrl?: string | null;
+  siteName?: string;
 }
 
-export function Hero({ heading, subheading, primaryCta, secondaryCta, images = [] }: HeroProps) {
+export function Hero({ heading, subheading, primaryCta, secondaryCta, images = [], logoUrl, siteName }: HeroProps) {
   const [big, small1, small2] = images;
 
   return (
     <section className="border-b border-border bg-secondary/40">
       <Container className="grid gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-24">
         <div>
+          {logoUrl && (
+            <Image
+              src={logoUrl}
+              alt={siteName ?? ""}
+              width={360}
+              height={104}
+              className="mx-auto mb-8 block h-24 w-auto object-contain sm:h-28 lg:h-32"
+              priority
+            />
+          )}
           <h1 className="brand-display text-4xl sm:text-5xl lg:text-[3.4rem] lg:leading-[1.05] text-foreground text-balance">
             {heading}
           </h1>

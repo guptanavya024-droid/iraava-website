@@ -24,6 +24,9 @@ model AdminUser {
 model SiteSettings {
   id           String  @id @default("singleton")
   logoUrl      String?
+  // Icon-only mark (no text), used in the header where the full lockup's
+  // text becomes illegible at nav-bar size. Falls back to logoUrl if unset.
+  logoMarkUrl  String?
   siteName     String  @default("Iraava Naturals")
   tagline      String  @default("Nourished by India.")
   email        String?
@@ -138,6 +141,20 @@ model Product {
   isActive      Boolean         @default(true)
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
+}
+
+// Reference list backing the admin product-type combobox and the customer
+// type filter. `Product.type` stays a plain string matched by name rather
+// than a foreign key, so it never blocks an existing product from saving
+// even if a type is later renamed or removed here.
+model ProductType {
+  id        String          @id @default(cuid())
+  category  ProductCategory
+  name      String
+  order     Int             @default(0)
+  createdAt DateTime        @default(now())
+
+  @@unique([category, name])
 }
 
 // ─── Enquiries ───────────────────────────────────────────────────────────────

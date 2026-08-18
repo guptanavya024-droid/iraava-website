@@ -10,6 +10,7 @@ const socialLinkSchema = z.object({ platform: z.enum(SocialPlatform), url: z.str
 const bodySchema = z.object({
   settings: z.object({
     logoUrl: z.string().trim().url().nullable(),
+    logoMarkUrl: z.string().trim().url().nullable(),
     siteName: z.string().trim().min(1),
     tagline: z.string().trim().min(1),
     email: z.string().trim().email().nullable().or(z.literal("").transform(() => null)),

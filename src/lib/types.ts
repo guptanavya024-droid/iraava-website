@@ -9,6 +9,7 @@ export type SocialPlatform =
 
 export interface SiteSettingsData {
   logoUrl: string | null;
+  logoMarkUrl: string | null;
   siteName: string;
   tagline: string;
   email: string | null;

@@ -79,16 +79,33 @@ export function SettingsForm({
         <CardHeader>
           <CardTitle className="text-base">Logo</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <ImageUpload
-            value={settings.logoUrl}
-            onChange={(logoUrl) => setSettings((s) => ({ ...s, logoUrl }))}
-            aspect="wide"
-            label="logo"
-          />
-          <p className="text-xs text-muted-foreground">
-            If no logo is uploaded, the site shows &ldquo;{settings.siteName}&rdquo; as a text wordmark instead.
-          </p>
+        <CardContent className="grid gap-6 sm:grid-cols-2">
+          <div className="space-y-2">
+            <Label>Full logo</Label>
+            <ImageUpload
+              value={settings.logoUrl}
+              onChange={(logoUrl) => setSettings((s) => ({ ...s, logoUrl }))}
+              aspect="wide"
+              label="logo"
+            />
+            <p className="text-xs text-muted-foreground">
+              Used on the homepage and footer. If none is uploaded, the site shows &ldquo;{settings.siteName}&rdquo; as
+              text instead.
+            </p>
+          </div>
+          <div className="space-y-2">
+            <Label>Icon-only mark</Label>
+            <ImageUpload
+              value={settings.logoMarkUrl}
+              onChange={(logoMarkUrl) => setSettings((s) => ({ ...s, logoMarkUrl }))}
+              aspect="square"
+              label="mark"
+            />
+            <p className="text-xs text-muted-foreground">
+              Used in the navigation bar, where the full logo&apos;s text is too small to read. Falls back to the full
+              logo if none is uploaded.
+            </p>
+          </div>
         </CardContent>
       </Card>
 

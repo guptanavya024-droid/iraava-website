@@ -21,6 +21,12 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { ImageUpload } from "@/components/admin/image-upload";
+import { TypeCombobox } from "@/components/admin/type-combobox";
+
+interface ProductTypeOption {
+  category: "FACE_CARE" | "BODY_CARE";
+  name: string;
+}
 
 interface Product {
   id: string;
@@ -54,8 +60,15 @@ const EMPTY_FORM: Omit<Product, "id"> = {
   isActive: true,
 };
 
-export function ProductsClient({ initialProducts }: { initialProducts: Product[] }) {
+export function ProductsClient({
+  initialProducts,
+  productTypes,
+}: {
+  initialProducts: Product[];
+  productTypes: ProductTypeOption[];
+}) {
   const [products, setProducts] = useState(initialProducts);
+  const [types, setTypes] = useState(productTypes);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState<Omit<Product, "id">>(EMPTY_FORM);
@@ -115,6 +128,11 @@ export function ProductsClient({ initialProducts }: { initialProducts: Product[]
       const saved: Product = await res.json();
 
       setProducts((prev) => (editingId ? prev.map((p) => (p.id === editingId ? saved : p)) : [...prev, saved]));
+      setTypes((prev) =>
+        prev.some((t) => t.category === saved.category && t.name === saved.type)
+          ? prev
+          : [...prev, { category: saved.category, name: saved.type }]
+      );
       toast.success(editingId ? "Product updated." : "Product added.");
       setDialogOpen(false);
     } catch {
@@ -182,7 +200,10 @@ export function ProductsClient({ initialProducts }: { initialProducts: Product[]
                 <Label>Category</Label>
                 <Select
                   value={form.category}
-                  onChange={(e) => setForm((f) => ({ ...f, category: e.target.value as Product["category"] }))}
+                  onChange={(e) => {
+                    const category = e.target.value as Product["category"];
+                    setForm((f) => (f.category === category ? f : { ...f, category, type: "" }));
+                  }}
                 >
                   <option value="FACE_CARE">Face Care</option>
                   <option value="BODY_CARE">Body Care</option>
@@ -190,10 +211,11 @@ export function ProductsClient({ initialProducts }: { initialProducts: Product[]
               </div>
               <div className="space-y-1.5">
                 <Label>Type</Label>
-                <Input
-                  placeholder="e.g. Face Wash"
+                <TypeCombobox
+                  category={form.category}
+                  types={types}
                   value={form.type}
-                  onChange={(e) => setForm((f) => ({ ...f, type: e.target.value }))}
+                  onChange={(type) => setForm((f) => ({ ...f, type }))}
                 />
               </div>
             </div>

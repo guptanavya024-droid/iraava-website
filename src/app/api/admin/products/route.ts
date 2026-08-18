@@ -3,6 +3,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { requireAdminSession } from "@/lib/require-admin";
+import { ensureProductType } from "@/lib/product-types";
 import { ProductCategory } from "@/generated/prisma/enums";
 
 const productSchema = z.object({
@@ -24,6 +25,8 @@ export async function POST(request: Request) {
 
   const parsed = productSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Invalid submission" }, { status: 400 });
+
+  await ensureProductType(parsed.data.category, parsed.data.type);
 
   const maxOrder = await db.product.aggregate({ _max: { order: true }, where: { category: parsed.data.category } });
 

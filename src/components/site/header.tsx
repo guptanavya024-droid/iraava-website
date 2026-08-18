@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -12,17 +13,29 @@ import { cn } from "@/lib/utils";
 
 interface HeaderProps {
   logoUrl: string | null;
+  logoMarkUrl: string | null;
   siteName: string;
 }
 
-export function Header({ logoUrl, siteName }: HeaderProps) {
+function HeaderMark({ logoUrl, logoMarkUrl, siteName }: HeaderProps) {
+  if (logoMarkUrl) {
+    return (
+      <Link href="/" className="flex shrink-0 items-center">
+        <Image src={logoMarkUrl} alt={siteName} width={56} height={56} className="h-11 w-11 object-contain sm:h-12 sm:w-12" priority />
+      </Link>
+    );
+  }
+  return <Logo logoUrl={logoUrl} siteName={siteName} size="lg" />;
+}
+
+export function Header({ logoUrl, logoMarkUrl, siteName }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur">
-      <Container className="flex h-16 items-center justify-between">
-        <Logo logoUrl={logoUrl} siteName={siteName} />
+      <Container className="flex h-20 items-center justify-between">
+        <HeaderMark logoUrl={logoUrl} logoMarkUrl={logoMarkUrl} siteName={siteName} />
 
         <nav className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map((link) => (

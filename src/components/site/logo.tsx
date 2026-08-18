@@ -6,15 +6,25 @@ interface LogoProps {
   logoUrl: string | null;
   siteName: string;
   className?: string;
+  size?: "default" | "lg";
 }
 
-export function Logo({ logoUrl, siteName, className }: LogoProps) {
+export function Logo({ logoUrl, siteName, className, size = "default" }: LogoProps) {
   return (
     <Link href="/" className={cn("flex items-center gap-2 shrink-0", className)}>
       {logoUrl ? (
-        <Image src={logoUrl} alt={siteName} width={140} height={40} className="h-9 w-auto object-contain" priority />
+        <Image
+          src={logoUrl}
+          alt={siteName}
+          width={size === "lg" ? 220 : 140}
+          height={size === "lg" ? 64 : 40}
+          className={cn("w-auto object-contain", size === "lg" ? "h-14 sm:h-16" : "h-9")}
+          priority
+        />
       ) : (
-        <span className="brand-display text-xl text-current">{siteName}</span>
+        <span className={cn("brand-display text-current", size === "lg" ? "text-3xl sm:text-4xl" : "text-xl")}>
+          {siteName}
+        </span>
       )}
     </Link>
   );

@@ -5,10 +5,15 @@ import { FeatureCard } from "@/components/site/feature-card";
 import { ProductCategoryCard } from "@/components/site/product-category-card";
 import { CtaBanner } from "@/components/site/cta-banner";
 import { Reveal } from "@/components/site/reveal";
-import { getHomeContent, getWhyUsPoints, getActiveProducts } from "@/lib/content";
+import { getHomeContent, getWhyUsPoints, getActiveProducts, getSiteSettings } from "@/lib/content";
 
 export default async function HomePage() {
-  const [content, whyUsPoints, products] = await Promise.all([getHomeContent(), getWhyUsPoints(), getActiveProducts()]);
+  const [content, whyUsPoints, products, settings] = await Promise.all([
+    getHomeContent(),
+    getWhyUsPoints(),
+    getActiveProducts(),
+    getSiteSettings(),
+  ]);
 
   const withImages = products.filter((p) => p.imageUrl);
   const heroImages = withImages.slice(0, 3).map((p) => ({ url: p.imageUrl!, alt: p.name }));
@@ -25,6 +30,8 @@ export default async function HomePage() {
         primaryCta={{ label: "Explore Product Range", href: "/product-range" }}
         secondaryCta={{ label: "Request Catalogue", href: "/contact" }}
         images={heroImages}
+        logoUrl={settings.logoUrl}
+        siteName={settings.siteName}
       />
 
       <div className="border-b border-border">

@@ -7,6 +7,7 @@ import type { SiteSettingsData, SocialLinkData } from "@/lib/types";
 
 export const DEFAULT_SITE_SETTINGS: SiteSettingsData = {
   logoUrl: null,
+  logoMarkUrl: null,
   siteName: "Iraava Naturals",
   tagline: "Nourished by India.",
   email: null,
@@ -150,4 +151,26 @@ export async function getWorkWithUsContent() {
 
 export async function getActiveProducts() {
   return db.product.findMany({ where: { isActive: true }, orderBy: [{ category: "asc" }, { order: "asc" }] });
+}
+
+export const DEFAULT_PRODUCT_TYPES: { category: "FACE_CARE" | "BODY_CARE"; name: string }[] = [
+  { category: "FACE_CARE", name: "Face Wash" },
+  { category: "FACE_CARE", name: "Face Scrub" },
+  { category: "FACE_CARE", name: "Face Cream" },
+  { category: "FACE_CARE", name: "Face Serum" },
+  { category: "FACE_CARE", name: "Toner" },
+  { category: "FACE_CARE", name: "Face Gel" },
+  { category: "FACE_CARE", name: "Lip Scrub" },
+  { category: "FACE_CARE", name: "Lip Balm" },
+  { category: "BODY_CARE", name: "Body Lotion" },
+  { category: "BODY_CARE", name: "Body Scrub" },
+  { category: "BODY_CARE", name: "Body Wash" },
+  { category: "BODY_CARE", name: "Foot Butter Balm" },
+];
+
+// Every type for a category, not just ones with active products right now,
+// so the customer filter and admin combobox both show the full reference
+// list per the "show all types, not just types that have items" requirement.
+export async function getProductTypes() {
+  return db.productType.findMany({ orderBy: [{ category: "asc" }, { order: "asc" }] });
 }

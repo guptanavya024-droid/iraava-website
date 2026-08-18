@@ -13,6 +13,7 @@ import {
   DEFAULT_APPROACH_PRINCIPLES,
   DEFAULT_PRODUCT_RANGE_CONTENT,
   DEFAULT_WORK_WITH_US_CONTENT,
+  DEFAULT_PRODUCT_TYPES,
 } from "../src/lib/content";
 
 // Source assets live outside the repo, in the sibling "Iraava Website"
@@ -48,16 +49,18 @@ async function seedAdminUser() {
 }
 
 async function seedSiteSettings() {
+  const existing = await db.siteSettings.findUnique({ where: { id: "singleton" } });
+  if (existing) {
+    console.log("Site settings already seeded, skipping (logo included — edit it via /admin/settings).");
+    return;
+  }
+
   const logoUrl = await uploadAsset("Iraava - Logo.jpg", "logo").catch((e) => {
     console.warn("Logo upload skipped:", (e as Error).message);
     return null;
   });
 
-  await db.siteSettings.upsert({
-    where: { id: "singleton" },
-    create: { id: "singleton", ...DEFAULT_SITE_SETTINGS, logoUrl },
-    update: logoUrl ? { logoUrl } : {},
-  });
+  await db.siteSettings.create({ data: { id: "singleton", ...DEFAULT_SITE_SETTINGS, logoUrl } });
   console.log("Site settings seeded" + (logoUrl ? " with logo" : ""));
 }
 
@@ -109,6 +112,17 @@ async function seedWorkWithUsContent() {
   console.log("Work With Us content seeded");
 }
 
+async function seedProductTypes() {
+  for (const [order, t] of DEFAULT_PRODUCT_TYPES.entries()) {
+    await db.productType.upsert({
+      where: { category_name: { category: t.category, name: t.name } },
+      create: { category: t.category, name: t.name, order },
+      update: {},
+    });
+  }
+  console.log(`Product types seeded (${DEFAULT_PRODUCT_TYPES.length})`);
+}
+
 async function seedProducts() {
   const existing = await db.product.count();
   if (existing > 0) {
@@ -153,6 +167,7 @@ async function main() {
   await seedAboutContent();
   await seedProductRangeContent();
   await seedWorkWithUsContent();
+  await seedProductTypes();
   await seedProducts();
 }
 
