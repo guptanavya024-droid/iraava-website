@@ -7,7 +7,7 @@ const enquirySchema = z.object({
   name: z.string().trim().min(1).max(200),
   company: z.string().trim().min(1).max(200),
   workEmail: z.string().trim().email().max(200),
-  phone: z.string().trim().max(50).optional(),
+  phone: z.string().trim().min(1).max(50),
   country: z.string().trim().min(1).max(100),
   buyerType: z.enum(BuyerType),
   productCategories: z.array(z.enum(["FACE_CARE", "BODY_CARE"])).min(1),

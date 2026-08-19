@@ -6,7 +6,7 @@ import { Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImageUpload } from "@/components/admin/image-upload";
 import { SOCIAL_LABELS } from "@/components/site/social-icons";
@@ -173,15 +173,19 @@ export function SettingsForm({
           {socialLinks.map((link, i) => (
             <div key={i} className="flex gap-2 items-center">
               <Select
-                className="w-40 shrink-0"
                 value={link.platform}
-                onChange={(e) => updateSocial(i, { platform: e.target.value as SocialPlatform })}
+                onValueChange={(value) => updateSocial(i, { platform: value as SocialPlatform })}
               >
-                {PLATFORMS.map((p) => (
-                  <option key={p} value={p}>
-                    {SOCIAL_LABELS[p]}
-                  </option>
-                ))}
+                <SelectTrigger className="w-40 shrink-0">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {PLATFORMS.map((p) => (
+                    <SelectItem key={p} value={p}>
+                      {SOCIAL_LABELS[p]}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
               </Select>
               <Input
                 placeholder="https://…"

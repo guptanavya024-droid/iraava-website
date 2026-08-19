@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
 const BUYER_TYPES = [
@@ -27,6 +27,8 @@ export function EnquiryForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [categories, setCategories] = useState<string[]>([]);
+  const [buyerType, setBuyerType] = useState("");
+  const [enquiryType, setEnquiryType] = useState("");
 
   function toggleCategory(value: string) {
     setCategories((prev) => (prev.includes(value) ? prev.filter((c) => c !== value) : [...prev, value]));
@@ -45,16 +47,24 @@ export function EnquiryForm() {
       toast.error("Select at least one product category.");
       return;
     }
+    if (!buyerType) {
+      toast.error("Select a buyer type.");
+      return;
+    }
+    if (!enquiryType) {
+      toast.error("Select an enquiry type.");
+      return;
+    }
 
     const payload = {
       name: formData.get("name"),
       company: formData.get("company"),
       workEmail: formData.get("workEmail"),
-      phone: formData.get("phone") || undefined,
+      phone: formData.get("phone"),
       country: formData.get("country"),
-      buyerType: formData.get("buyerType"),
+      buyerType,
       productCategories: categories,
-      enquiryType: formData.get("enquiryType"),
+      enquiryType,
       message: formData.get("message"),
     };
 
@@ -69,6 +79,8 @@ export function EnquiryForm() {
       setSubmitted(true);
       form.reset();
       setCategories([]);
+      setBuyerType("");
+      setEnquiryType("");
     } catch {
       toast.error("Something went wrong. Please try again or email us directly.");
     } finally {
@@ -103,8 +115,8 @@ export function EnquiryForm() {
           <Input id="workEmail" name="workEmail" type="email" required />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="phone">Phone (optional)</Label>
-          <Input id="phone" name="phone" type="tel" />
+          <Label htmlFor="phone">Phone</Label>
+          <Input id="phone" name="phone" type="tel" required />
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="country">Country / Target Market</Label>
@@ -112,15 +124,17 @@ export function EnquiryForm() {
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="buyerType">Buyer Type</Label>
-          <Select id="buyerType" name="buyerType" required defaultValue="">
-            <option value="" disabled>
-              Select one
-            </option>
-            {BUYER_TYPES.map((t) => (
-              <option key={t.value} value={t.value}>
-                {t.label}
-              </option>
-            ))}
+          <Select value={buyerType} onValueChange={setBuyerType}>
+            <SelectTrigger id="buyerType">
+              <SelectValue placeholder="Select one" />
+            </SelectTrigger>
+            <SelectContent>
+              {BUYER_TYPES.map((t) => (
+                <SelectItem key={t.value} value={t.value}>
+                  {t.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
           </Select>
         </div>
       </div>
@@ -147,15 +161,17 @@ export function EnquiryForm() {
 
       <div className="space-y-1.5">
         <Label htmlFor="enquiryType">Enquiry Type</Label>
-        <Select id="enquiryType" name="enquiryType" required defaultValue="">
-          <option value="" disabled>
-            Select one
-          </option>
-          {ENQUIRY_TYPES.map((t) => (
-            <option key={t.value} value={t.value}>
-              {t.label}
-            </option>
-          ))}
+        <Select value={enquiryType} onValueChange={setEnquiryType}>
+          <SelectTrigger id="enquiryType">
+            <SelectValue placeholder="Select one" />
+          </SelectTrigger>
+          <SelectContent>
+            {ENQUIRY_TYPES.map((t) => (
+              <SelectItem key={t.value} value={t.value}>
+                {t.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
         </Select>
       </div>
 

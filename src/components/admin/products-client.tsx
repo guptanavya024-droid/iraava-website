@@ -7,7 +7,7 @@ import { Plus, Pencil, Trash2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
@@ -200,13 +200,18 @@ export function ProductsClient({
                 <Label>Category</Label>
                 <Select
                   value={form.category}
-                  onChange={(e) => {
-                    const category = e.target.value as Product["category"];
+                  onValueChange={(value) => {
+                    const category = value as Product["category"];
                     setForm((f) => (f.category === category ? f : { ...f, category, type: "" }));
                   }}
                 >
-                  <option value="FACE_CARE">Face Care</option>
-                  <option value="BODY_CARE">Body Care</option>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="FACE_CARE">Face Care</SelectItem>
+                    <SelectItem value="BODY_CARE">Body Care</SelectItem>
+                  </SelectContent>
                 </Select>
               </div>
               <div className="space-y-1.5">
