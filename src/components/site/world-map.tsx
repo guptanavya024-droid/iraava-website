@@ -1,33 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
 
 // Everything is authored in the base map's 1010 x 666 viewBox so the overlay
-// lines up with world-map.svg (India is already filled green in that file).
-const INDIA = { x: 712, y: 404 };
+// lines up with world-map.svg. Coordinates are country centroids taken from
+// that SVG's own paths, so every pin lands on the country, not the sea.
+const INDIA = { x: 707, y: 400 };
 
-// Approximate export destinations, spread the way the buyers actually are:
-// North America, South America, a Europe cluster, across Africa, the Gulf,
-// East and South-East Asia, and Australia.
 const DESTINATIONS: Array<[number, number]> = [
-  [158, 252], // US west
-  [242, 234], // US east
-  [224, 276], // US south
-  [352, 462], // Brazil
-  [452, 200], // Ireland
-  [470, 194], // UK
-  [496, 206], // Netherlands / Germany
-  [480, 224], // France
-  [462, 246], // Spain
-  [514, 236], // Italy
-  [532, 206], // Poland / eastern Europe
-  [456, 278], // Morocco
-  [492, 340], // Nigeria
-  [566, 366], // east Africa
-  [540, 446], // southern Africa
-  [628, 300], // Gulf
-  [664, 210], // Central Asia
-  [896, 250], // Japan
-  [822, 344], // south-east Asia
-  [900, 452], // Australia
+  [130, 318], // United States (west)
+  [233, 292], // United States (east)
+  [187, 394], // Mexico
+  [268, 448], // Colombia
+  [322, 506], // Brazil
+  [466, 274], // United Kingdom
+  [490, 291], // Netherlands
+  [482, 316], // France
+  [452, 350], // Spain
+  [510, 333], // Italy
+  [529, 292], // Poland
+  [455, 369], // Morocco
+  [499, 437], // Nigeria
+  [581, 462], // Kenya
+  [548, 560], // South Africa
+  [602, 392], // Saudi Arabia
+  [663, 307], // Kazakhstan
+  [853, 357], // Japan
+  [852, 555], // Australia
 ];
 
 function arc(dx: number, dy: number) {
@@ -97,7 +94,7 @@ export function WorldMap() {
 
         <span
           className="absolute -translate-y-1/2 whitespace-nowrap rounded-full bg-background/90 px-2.5 py-0.5 text-xs font-semibold text-foreground shadow-sm backdrop-blur-sm"
-          style={{ left: "76%", top: "63%" }}
+          style={{ left: "73%", top: "61%" }}
           aria-hidden
         >
           India
