@@ -15,10 +15,10 @@ export default async function ProductRangePage() {
 
   return (
     <>
-      <section className="border-b border-border py-16 sm:py-20">
+      <section className="border-b border-border py-16 sm:py-24">
         <Container className="max-w-2xl text-center mx-auto">
           <h1 className="brand-display text-4xl sm:text-5xl text-foreground text-balance">{content.headline}</h1>
-          <p className="mt-5 text-base text-muted-foreground leading-relaxed">{content.subheading}</p>
+          <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">{content.subheading}</p>
           <p className="mt-3 text-sm text-muted-foreground/80">{content.introText}</p>
         </Container>
       </section>

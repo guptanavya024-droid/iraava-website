@@ -14,14 +14,14 @@ export default async function AboutPage() {
 
   return (
     <>
-      <section className="border-b border-border py-16 sm:py-20">
+      <section className="border-b border-border py-16 sm:py-24">
         <Container className="max-w-2xl text-center mx-auto">
           <h1 className="brand-display text-4xl sm:text-5xl text-foreground text-balance">{content.headline}</h1>
-          <p className="mt-5 text-base text-muted-foreground leading-relaxed">{content.subheading}</p>
+          <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">{content.subheading}</p>
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="py-20 sm:py-28">
         <Container className="max-w-2xl mx-auto space-y-5">
           {storyParagraphs.map((para, i) => (
             <Reveal key={i} delay={i * 100}>
@@ -31,12 +31,12 @@ export default async function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20 bg-secondary/60">
+      <section className="border-y border-border bg-secondary/60 py-20 sm:py-28">
         <Container>
           <Reveal>
             <SectionHeading heading="Four principles that guide the work" align="center" />
           </Reveal>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="mx-auto mt-14 grid max-w-4xl gap-x-12 gap-y-8 sm:grid-cols-2">
             {principles.map((p, i) => (
               <Reveal key={p.id} delay={i * 100}>
                 <FeatureCard index={i} title={p.title} body={p.body} />
@@ -46,10 +46,10 @@ export default async function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="py-20 sm:py-28">
         <Container className="max-w-2xl mx-auto text-center">
           <Reveal>
-            <p className="brand-display text-2xl sm:text-3xl text-foreground leading-snug">{content.closingStatement}</p>
+            <p className="brand-display text-lg sm:text-xl text-foreground leading-relaxed">{content.closingStatement}</p>
           </Reveal>
         </Container>
       </section>

@@ -5,6 +5,7 @@ import { Container } from "@/components/site/container";
 import { SectionHeading } from "@/components/site/section-heading";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/site/reveal";
+import { ProcessSteps } from "@/components/site/process-steps";
 import { getWorkWithUsContent, getSiteSettings } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Work With Us" };
@@ -21,14 +22,14 @@ export default async function WorkWithUsPage() {
 
   return (
     <>
-      <section className="border-b border-border py-16 sm:py-20">
+      <section className="border-b border-border py-16 sm:py-24">
         <Container className="max-w-2xl mx-auto text-center">
           <h1 className="brand-display text-4xl sm:text-5xl text-foreground text-balance">Who we work with</h1>
-          <p className="mt-5 text-base text-muted-foreground leading-relaxed">{content.intro}</p>
+          <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">{content.intro}</p>
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="py-20 sm:py-28">
         <Container className="grid gap-12 lg:grid-cols-2 items-start">
           <Reveal>
             <SectionHeading heading="Start with our catalogue." subheading={content.catalogueBlurb} />
@@ -81,11 +82,13 @@ export default async function WorkWithUsPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-20 bg-secondary/60">
+      <ProcessSteps />
+
+      <section className="border-t border-border bg-secondary/60 py-20 sm:py-28">
         <Container className="max-w-2xl mx-auto text-center">
           <Reveal>
             <h2 className="brand-display text-3xl sm:text-4xl text-foreground">Made in India. Made for your brand.</h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">{content.madeInIndiaText}</p>
+            <p className="mt-4 text-base text-muted-foreground leading-relaxed">{content.madeInIndiaText}</p>
           </Reveal>
         </Container>
       </section>

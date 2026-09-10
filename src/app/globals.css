@@ -117,3 +117,54 @@ a:focus-visible,
   font-weight: 700;
   letter-spacing: -0.02em;
 }
+
+/* ── Motion ────────────────────────────────────────────────────────────────
+   One easing curve and one duration scale so every entrance, hover and
+   parallax move reads as the same hand. --ease-out-soft is a gentle
+   decelerate (no overshoot, this is a calm brand). */
+:root {
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ease-soft {
+  transition-timing-function: var(--ease-out-soft);
+}
+
+/* Slow drift on the hero photo: a Ken Burns pan that never fully settles,
+   kept subtle (3% scale, ~1% translate) so it feels alive, not restless. */
+@keyframes hero-pan {
+  0%   { transform: scale(1.03) translate3d(0, 0, 0); }
+  100% { transform: scale(1.07) translate3d(-1%, -1.5%, 0); }
+}
+.hero-pan {
+  animation: hero-pan 22s var(--ease-out-soft) alternate infinite;
+  will-change: transform;
+}
+
+/* Scroll cue nudge at the bottom of the hero. */
+@keyframes scroll-cue {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50%      { transform: translateY(4px); opacity: 1; }
+}
+.scroll-cue { animation: scroll-cue 2.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-pan,
+  .scroll-cue,
+  .marquee-track {
+    animation: none !important;
+  }
+  .hero-pan { transform: scale(1.04); }
+}
+
+/* Infinite capability ticker. Track holds two copies of the list; it slides
+   exactly one copy width then loops, so the seam is invisible. */
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-track {
+  animation: marquee 38s linear infinite;
+}
+.marquee-mask:hover .marquee-track {
+  animation-play-state: paused;
+}

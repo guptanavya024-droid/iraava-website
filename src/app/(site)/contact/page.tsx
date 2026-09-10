@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/site/container";
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import { Reveal } from "@/components/site/reveal";
+import { WorldMap } from "@/components/site/world-map";
 import { getSiteSettings } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Contact" };
@@ -17,13 +18,14 @@ export default async function ContactPage() {
   ].filter(Boolean);
 
   return (
-    <section className="py-16 sm:py-20">
+    <>
+    <section className="py-16 sm:py-24">
       <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
         <Reveal>
-          <h1 className="brand-display text-3xl sm:text-4xl text-foreground text-balance">
+          <h1 className="brand-display text-4xl sm:text-5xl text-foreground text-balance">
             We&apos;d love to hear from you.
           </h1>
-          <p className="mt-5 text-sm text-muted-foreground leading-relaxed">
+          <p className="mt-5 text-base text-muted-foreground leading-relaxed">
             If you are looking to source Indian skincare, or just want to know more about what we make, drop us a
             message and we will get back to you.
           </p>
@@ -66,5 +68,14 @@ export default async function ContactPage() {
         </Reveal>
       </Container>
     </section>
+
+    <section className="border-t border-border bg-secondary/40 py-20 sm:py-28">
+      <Container>
+        <Reveal>
+          <WorldMap />
+        </Reveal>
+      </Container>
+    </section>
+    </>
   );
 }

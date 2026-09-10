@@ -13,13 +13,13 @@ interface ProductCardProps {
 export function ProductCard({ name, variant, type, description, imageUrl }: ProductCardProps) {
   return (
     <div className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-primary/30">
-      <div className="relative aspect-square bg-secondary overflow-hidden">
+      <div className="relative aspect-[4/3] bg-secondary overflow-hidden">
         {imageUrl ? (
           <Image
             src={imageUrl}
             alt={name}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
             sizes="(min-width: 768px) 33vw, 50vw"
           />
         ) : (

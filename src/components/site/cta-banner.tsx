@@ -11,11 +11,11 @@ interface CtaBannerProps {
 
 export function CtaBanner({ heading, body, primaryCta, secondaryCta }: CtaBannerProps) {
   return (
-    <section className="bg-secondary">
-      <Container className="py-16 sm:py-20 text-center flex flex-col items-center">
+    <section className="border-t border-border bg-secondary">
+      <Container className="py-20 sm:py-28 text-center flex flex-col items-center">
         <h2 className="brand-display text-3xl sm:text-4xl text-foreground max-w-xl">{heading}</h2>
-        <p className="mt-4 max-w-lg text-muted-foreground">{body}</p>
-        <div className="mt-8 flex flex-col sm:flex-row gap-3">
+        <p className="mt-5 max-w-lg text-base text-muted-foreground leading-relaxed">{body}</p>
+        <div className="mt-9 flex flex-col sm:flex-row gap-3">
           <Button asChild size="lg">
             <Link href={primaryCta.href}>{primaryCta.label}</Link>
           </Button>
