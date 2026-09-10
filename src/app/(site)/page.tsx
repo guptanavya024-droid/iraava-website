@@ -48,8 +48,9 @@ export default async function HomePage() {
       </ImageText>
 
       <ImageText
-        image="/images/process-05-production.jpg"
-        imageAlt="Bottles moving along a filling line at the manufacturing facility"
+        image="/images/home-products.jpg"
+        imageAlt="Iraava Naturals creams and serums laid out with turmeric, neem, amla and ashwagandha"
+        imagePosition="center 58%"
         flip
         heading="What we do"
         link={{ label: "See the product range", href: "/product-range" }}

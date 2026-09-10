@@ -5,6 +5,7 @@ import { Container } from "@/components/site/container";
 import { SectionHeading } from "@/components/site/section-heading";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/site/reveal";
+import { PageHeader } from "@/components/site/page-header";
 import { ProcessSteps } from "@/components/site/process-steps";
 import { getWorkWithUsContent, getSiteSettings } from "@/lib/content";
 
@@ -22,12 +23,13 @@ export default async function WorkWithUsPage() {
 
   return (
     <>
-      <section className="border-b border-border py-16 sm:py-24">
-        <Container className="max-w-2xl mx-auto text-center">
-          <h1 className="brand-display text-4xl sm:text-5xl text-foreground text-balance">Who we work with</h1>
-          <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">{content.intro}</p>
-        </Container>
-      </section>
+      <PageHeader
+        title="Who we work with"
+        intro={content.intro}
+        image="/images/work-header.jpg"
+        imageAlt="A lineup of Iraava Naturals face and body care bottles and jars"
+        imagePosition="center 82%"
+      />
 
       <section className="py-20 sm:py-28">
         <Container className="grid gap-12 lg:grid-cols-2 items-start">

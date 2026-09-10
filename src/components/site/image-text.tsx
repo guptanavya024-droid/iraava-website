@@ -11,6 +11,8 @@ interface ImageTextProps {
   imageAlt: string;
   /** Portrait sources get a taller frame; landscape ones a 4:3. */
   portrait?: boolean;
+  /** object-position for the image, e.g. "center 55%". */
+  imagePosition?: string;
   heading: string;
   children: ReactNode;
   link?: { label: string; href: string };
@@ -19,9 +21,9 @@ interface ImageTextProps {
   className?: string;
 }
 
-export function ImageText({ image, imageAlt, portrait, heading, children, link, flip, className }: ImageTextProps) {
+export function ImageText({ image, imageAlt, portrait, imagePosition, heading, children, link, flip, className }: ImageTextProps) {
   return (
-    <section className={cn("py-16 sm:py-24", className)}>
+    <section className={cn("py-14 sm:py-20", className)}>
       <Container className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         <Reveal
           variant="image"
@@ -40,6 +42,7 @@ export function ImageText({ image, imageAlt, portrait, heading, children, link, 
               alt={imageAlt}
               fill
               className="object-cover"
+              style={imagePosition ? { objectPosition: imagePosition } : undefined}
               sizes="(min-width: 1024px) 46vw, 100vw"
             />
           </div>

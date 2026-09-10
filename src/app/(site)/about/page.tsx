@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/site/container";
+import { PageHeader } from "@/components/site/page-header";
 import { SectionHeading } from "@/components/site/section-heading";
 import { FeatureCard } from "@/components/site/feature-card";
 import { CtaBanner } from "@/components/site/cta-banner";
@@ -14,12 +15,13 @@ export default async function AboutPage() {
 
   return (
     <>
-      <section className="border-b border-border py-16 sm:py-24">
-        <Container className="max-w-2xl text-center mx-auto">
-          <h1 className="brand-display text-4xl sm:text-5xl text-foreground text-balance">{content.headline}</h1>
-          <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">{content.subheading}</p>
-        </Container>
-      </section>
+      <PageHeader
+        title={content.headline}
+        intro={content.subheading}
+        image="/images/about-header.jpg"
+        imageAlt="Hands placing saffron threads on a stone slab beside a copper mortar of turmeric"
+        imagePosition="center 55%"
+      />
 
       <section className="py-20 sm:py-28">
         <Container className="max-w-2xl mx-auto space-y-5">

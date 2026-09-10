@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/site/container";
+import { PageHeader } from "@/components/site/page-header";
 import { ProductCatalog } from "@/components/site/product-catalog";
 import { CtaBanner } from "@/components/site/cta-banner";
 import { getProductRangeContent, getActiveProducts, getProductTypes } from "@/lib/content";
@@ -15,15 +17,27 @@ export default async function ProductRangePage() {
 
   return (
     <>
-      <section className="border-b border-border py-16 sm:py-24">
-        <Container className="max-w-2xl text-center mx-auto">
-          <h1 className="brand-display text-4xl sm:text-5xl text-foreground text-balance">{content.headline}</h1>
-          <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">{content.subheading}</p>
-          <p className="mt-3 text-sm text-muted-foreground/80">{content.introText}</p>
+      <PageHeader title={content.headline} intro={content.subheading}>
+        <p className="mt-3 text-sm text-muted-foreground/80">{content.introText}</p>
+      </PageHeader>
+
+      <section className="pt-10 sm:pt-14">
+        <Container>
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border bg-secondary sm:aspect-[2/1] lg:aspect-[21/8]">
+            <Image
+              src="/images/range-strip.jpg"
+              alt="Iraava Naturals serums and jars laid out with neem, amla, ashwagandha and turmeric"
+              fill
+              priority
+              className="object-cover"
+              style={{ objectPosition: "center 44%" }}
+              sizes="100vw"
+            />
+          </div>
         </Container>
       </section>
 
-      <section className="pt-8 pb-16 sm:pt-10 sm:pb-20">
+      <section className="pt-10 pb-16 sm:pt-14 sm:pb-20">
         <Container>
           <ProductCatalog products={products} productTypes={productTypes} />
         </Container>
